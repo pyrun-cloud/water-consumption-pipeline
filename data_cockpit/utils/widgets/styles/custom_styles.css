@@ -1,0 +1,249 @@
+/* custom_styles.css */
+
+/* Estilo para el campo de búsqueda */
+.custom-search input {
+    border-radius: 15px !important;
+    border: 2px solid #3498db !important;
+    padding: 8px !important;
+    font-size: 14px !important;
+    outline: none;
+    height: 30px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.custom-search input:focus {
+    border-color: #2980b9 !important;
+}
+
+/* Estilo para el botón de búsqueda */
+.custom-search-button {
+    border-radius: 15px !important;
+    background-color: #3498db !important;
+    color: #fff !important;
+    border: none !important;
+    font-weight: bold !important;
+    padding: 5px 10px !important;
+    transition: background-color 0.2s;
+    height: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.custom-search-button:hover {
+    background-color: #2980b9 !important;
+}
+
+/* Estilo para el dropdown de buckets */
+.custom-dropdown select {
+    border-radius: 15px !important;
+    border: 2px solid #3498db !important;
+    padding: 8px !important;
+    font-size: 14px !important;
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    height: 40px !important;
+    /* Aumenta el alto para ver el texto entero */
+}
+
+.custom-dropdown select:focus {
+    border-color: #2980b9 !important;
+}
+
+/* Estilo para el FileUpload: se muestra como un recuadro con borde punteado */
+.custom-fileupload {
+    border: 2px dashed #3498db;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    display: flex;
+    /* Utilizamos flexbox */
+    align-items: center;
+    /* Centrado vertical */
+    justify-content: center;
+    /* Centrado horizontal */
+    min-height: 40px;
+    /* Altura mínima para garantizar el centrado */
+}
+
+.custom-fileupload:hover {
+    background-color: #f0f8ff;
+    border-color: #2980b9;
+}
+
+/* Opcional: si el input interno se muestra y quieres ocultarlo */
+.custom-fileupload input[type="file"] {
+    display: none;
+}
+
+/* Estilo para cada card */
+.custom-card {
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    transition: transform 0.2s;
+}
+
+.custom-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Estilo para el botón dentro de la card */
+.custom-button {
+    border-radius: 15px !important;
+    background-color: #3498db !important;
+    color: #fff !important;
+    border: none !important;
+    font-weight: bold !important;
+    padding: 5px 10px !important;
+    transition: background-color 0.2s;
+    height: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.custom-button:hover {
+    background-color: #2980b9 !important;
+}
+
+/* Estilo para los botones de paginación */
+.pagination-button {
+    border-radius: 15px !important;
+    background-color: #2ecc71 !important;
+    color: #fff !important;
+    border: none !important;
+    font-weight: bold !important;
+    padding: 5px 10px !important;
+    transition: background-color 0.2s;
+    height: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.pagination-button:hover {
+    background-color: #27ae60 !important;
+}
+
+/* Estilo para la etiqueta de paginación */
+.pagination-label {
+    font-weight: bold;
+    margin: 0 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Clase para centrar elementos */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-text {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+.data-loader-widget {
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin: 20px 0;
+  }
+  
+  /* Título principal del DataLoaderWidget */
+  .data-loader-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2C3E50;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  /* Descripción del DataLoaderWidget */
+  .data-loader-description {
+    text-align: center;
+    color: #7F8C8D;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  /* Estilos para el toggle de benchmarking */
+  .benchmark-toggle button {
+    border-radius: 15px;
+    background-color: #F39C12;
+    color: white;
+    border: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.2s;
+    height: 30px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.benchmark-toggle button:hover {
+    background-color: #E67E22;
+}
+
+/* Estilos para el botón de benchmarking */
+.benchmark-button {
+    border-radius: 15px !important;
+    background-color: #F1C40F !important;
+    color: white !important;
+    border: none !important;
+    font-weight: bold !important;
+    padding: 5px 10px !important;
+    transition: background-color 0.2s;
+    height: 30px !important;
+    line-height: 30px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.benchmark-button:hover {
+    background-color: #F39C12 !important;
+}
+
+.custom-search input {
+    border-radius: 15px !important;
+    border: 2px solid #3498db !important;
+    padding: 8px !important;
+    font-size: 14px !important;
+    outline: none;
+    height: 30px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.custom-search input:focus {
+    border-color: #2980b9 !important;
+}
+
+/* Aplica el mismo estilo al input de File Key */
+.custom-text-input input {
+    border-radius: 15px !important;
+    border: 2px solid #3498db !important;
+    padding: 8px !important;
+    font-size: 14px !important;
+    outline: none;
+    height: 30px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.custom-text-input input:focus {
+    border-color: #2980b9 !important;
+}
