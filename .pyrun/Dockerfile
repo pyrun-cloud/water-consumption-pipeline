@@ -42,12 +42,12 @@ RUN mkdir -p ${FUNCTION_DIR}
 # Update pip
 ARG LITHOPS
 
-RUN pip install --upgrade setuptools && \
+RUN pip install --upgrade setuptools==65.6.0 && \
     pip install --upgrade pip && \
     pip install --upgrade requests && \
-    pip install --upgrade setuptools packaging wheel
+    pip install --upgrade packaging wheel
     
-RUN pip install --upgrade --ignore-installed pip wheel six setuptools \
+RUN pip install --upgrade --ignore-installed pip wheel six \
     && pip install --upgrade --no-cache-dir --ignore-installed \
         awslambdaric \
         boto3 \
@@ -81,8 +81,12 @@ RUN pip install --upgrade --ignore-installed pip wheel six setuptools \
 COPY requirements.txt requirements.txt
 COPY ./cloudbutton_geospatial /utils/cloudbutton_geospatial
 
-RUN pip install --upgrade pip six wheel setuptools && \
-   pip install --no-cache-dir --no-dependencies -r requirements.txt
+# Actualiza pip, setuptools y wheel en una capa separada
+RUN pip install --upgrade pip setuptools wheel
+
+# Instala los paquetes listados en requirements.txt sin forzar --no-dependencies ni --no-cache-dir
+RUN pip install -r requirements.txt
+RUN pip install --upgrade typing_extensions
 
 
 # Set working directory to function root directory
