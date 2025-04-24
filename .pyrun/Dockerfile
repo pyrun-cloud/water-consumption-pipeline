@@ -1,54 +1,30 @@
 # Python 3.9
 FROM public.ecr.aws/docker/library/python:3.10-slim-buster
 
-RUN apt-get update \
-    # Install aws-lambda-cpp build dependencies
-    && apt-get install -y \
-      g++ \
-      make \
-      cmake \
-      unzip \
-      build-essential \
-      gcc \
-      grass \
-      grass-core \
-      grass-dev \
-      libc-dev \
-      libxslt-dev \
-      libxml2-dev \
-      libffi-dev \
-      libssl-dev \
-      zip \
-      unzip \
-      vim \
-      libgdal-dev \
-      gdal-bin \
-      git \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-cache search linux-headers-generic
-
-
-ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
-ENV C_INCLUDE_PATH=/usr/include/gdal
-ENV GRASSBIN=grass76
-ENV HOME=/tmp
-ENV PYTHONPATH="/utils"
+ENV CPLUS_INCLUDE_PATH=/usr/include/gdal \
+    C_INCLUDE_PATH=/usr/include/gdal \
+    GRASSBIN=grass76 \
+    HOME=/tmp \
+    PYTHONPATH="/utils"
 
 ARG FUNCTION_DIR="/function"
+ARG LITHOPS
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+      g++ make cmake unzip build-essential gcc \
+      grass grass-core grass-dev libc-dev \
+      libxslt-dev libxml2-dev libffi-dev libssl-dev \
+      zip vim libgdal-dev gdal-bin git \
+    && rm -rf /var/lib/apt/lists/*
+
 
 # Copy function code
 RUN mkdir -p ${FUNCTION_DIR}
 
-# Update pip
-ARG LITHOPS
+RUN pip install --upgrade pip setuptools wheel typing_extensions
 
-RUN pip install --upgrade setuptools==65.6.0 && \
-    pip install --upgrade pip && \
-    pip install --upgrade requests && \
-    pip install --upgrade packaging wheel
-    
-RUN pip install --upgrade --ignore-installed pip wheel six \
-    && pip install --upgrade --no-cache-dir --ignore-installed \
+RUN pip install --no-cache-dir \
         awslambdaric \
         boto3 \
         redis \
@@ -81,16 +57,13 @@ RUN pip install --upgrade --ignore-installed pip wheel six \
 COPY requirements.txt requirements.txt
 COPY ./cloudbutton_geospatial /utils/cloudbutton_geospatial
 
-# Actualiza pip, setuptools y wheel en una capa separada
-RUN pip install --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Instala los paquetes listados en requirements.txt sin forzar --no-dependencies ni --no-cache-dir
-RUN pip install -r requirements.txt
-RUN pip install --upgrade typing_extensions
-
+RUN pip install --no-cache-dir --upgrade "typing_extensions>=4.5.0"
 
 # Set working directory to function root directory
 WORKDIR ${FUNCTION_DIR}
+
 
 # Put your dependencies here, using RUN pip install... or RUN apt install...
 
