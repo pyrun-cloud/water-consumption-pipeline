@@ -51,7 +51,7 @@ RUN pip install --no-cache-dir \
         matplotlib \
         gql==3.4.1 \
         requests_toolbelt \
-        git+https://github.com/CLOUDLAB-URV/dataplug@7a411e6949729d078a62dcb83a77d217bcdaa91a \
+        cloud-data-cockpit \
         "$LITHOPS"
 
 COPY requirements.txt requirements.txt
